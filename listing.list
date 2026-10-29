@@ -1,0 +1,32 @@
+     1                                  
+     2                                  section .data ; this the data section which holds initailized varables and const varables/values
+     3                                      ;  this are varable type declaration note equ is a const varable declaration type as you may know we dint subtitute the datatype equ to let
+     4                                      ; the assembler know how many bit we want to alocate for that varable is because the const gets subtituted for its value so it desent get a memory address like myConst equ 20 
+     5                                      ; myConst will be replaced with the initialized value in this case 20 
+     6                                      ; note the first d in dataType of a varable declaration is to signify this a dataType the like db as the first "d" is for dataType and the b is for single byte which is 8 bits eg dw "d" dataType "W" word which is 2 bytes 16 bits , dd "d" dataType "d" double word which is 4 bytes 32 bits 
+     7 00000000 0A                          singleByteVarable  db  10  ; this a varable of 8 bits since decimal 10 to binary is msb(1010)lsb
+     8 00000001 43                          doubleByteVarable db "C"  ; this also a 8 bits varable which is 1 byte since ech caracter is represented in a single byte
+     9 00000002 4869                        wordVarble dw "Hi" ; this is a 16 bits varable equvilent to 2 bytes which is represented with the dataType dw
+    10 00000004 6F4B6579                    doubleWordVarable dd "oKey" ; this a 32 bits varable equvilent to 4 bytes it is represented with the dataType dd which is a double word 
+    11                                      ;qourdWordVarble dq "victory" ; this a 64 bits varable equvilent to 8 bytes it is represented with the dataType dq which is a qourd  word  
+    12                                      ;;oneHoundredAndTwoantyEightBitVarable ddq "nwanoruo" ; this a 128 bit varable equvilent to 16 b  ytes it is represnted with the dataType ddq which is double qourd word
+    13 00000008 0A0A0A                      eightBitArr db 10, 10, 10 ; this an 8 bit array this means weach value in the array is 8 bit note no [  ] in the array declaration its defreantaciated with ,
+    14                                  
+    15                                  section .bss ; this the base section (bss) which hold vrables that are not yet initailized
+    16                                      ; note in the base section (bss) the varable allocated memory is and array which formart is as follows
+    17                                      ; <varableName> <resDataType> <arrayLength/count> this said when allocation some memory for an uninitailized varable the varable type is an array with each value the size of the resDataType and the length / count of the array is the <length/count> 
+    18 00000000 <res Ah>                    fourByteArray resw 5 ; this is an unitailized varable array with each value max size of 32 bits 4 bytes of length 5 eg [0, 0, 0, 0, 0] note the array is not initailed am guessing it holds random values
+    19 0000000A <res 28h>                   eightBytesArray resd 10; this a an unitailized varable array with each value max size of 64 bits 8 bytes of lenth 10 eg [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]   note the array is not initailed am guessing it holds random values
+    20 00000032 <res 64h>                   oneByteArray resb 100 ;   this a an unitailized varable array with each value max size of 8 bits 1 bytes of lenth 10 eg [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ... 100]   note the array is not initailed am guessing it holds random values  
+    21                                  
+    22                                  section .text
+    23                                      global _start
+    24                                  _start:
+    25 00000000 B800000000                  mov rax, 0
+    26 00000005 BF00000000                  mov rdi, 0
+    27 0000000A C3                          ret
+    28                                  ;last:
+    29                                   ;   syscall   
+    30                                         
+    31                                      
+    32                                      
